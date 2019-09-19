@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport-jwt');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 
 const mongoCon = 'mongodb+srv://sam:4vXCVrR99Ctz37ec@cluster-iualb.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoCon, {
