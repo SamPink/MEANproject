@@ -32,10 +32,16 @@ module.exports.getUserById = function (id, callback) {
 
 module.exports.getUserByUserName = function (userName, callback) {
     const query = {
-        userName: userName
+        name: userName
     };
+
     User.findOne(query, callback);
 };
+
+module.exports.getUsers = function (callback) {
+    User.find({}, callback);
+};
+
 
 module.exports.addUser = function (newUser, callback) {
     bcrypr.genSalt(10, (err, salt) => {

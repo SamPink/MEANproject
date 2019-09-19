@@ -41,9 +41,32 @@ router.get('/profile', (req, res, next) => {
     res.send('profile');
 });
 
-router.get('/validate', (req, res, next) => {
-    res.send('validate');
+router.get('/getUser/:name', (req, res) => {
+    User.getUserByUserName(req.params.name, (err, data) => {
+        if (err) {
+            res.json({
+                success: false,
+                mesg: 'Failed to  create user'
+            });
+        } else {
+            res.json({
+                success: true,
+                user: data.email
+            });
+        }
+    });
 });
+
+router.get('/getUsers', (req, res) => {
+    User.getUsers((err, data) => {
+        if (err) {
+            res.send('Error');
+        } else {
+            res.json(data);
+        }
+    });
+});
+
 
 
 module.exports = router;
