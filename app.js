@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use('/users', users);
 
 app.get('/', (req, res) => {
-    res.send('Hi');
+    res.json({Name: 'Y'});
 });
 
 app.listen(port, () => {

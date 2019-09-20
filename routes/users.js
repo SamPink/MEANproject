@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
+//Create new user
 router.post('/register', (req, res, next) => {
     let newUser = new User({
         name: req.body.name,
@@ -29,18 +30,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-router.post('/UpdateTo', (req, res, next) => {
-    res.send(req.body.password);
-});
-
-router.get('/authenticate', (req, res, next) => {
-    res.send('authenticate');
-});
-
-router.get('/profile', (req, res, next) => {
-    res.send('profile');
-});
-
+//Get user email by searching name
 router.get('/getUser/:name', (req, res) => {
     User.getUserByUserName(req.params.name, (err, data) => {
         if (err) {
@@ -57,6 +47,7 @@ router.get('/getUser/:name', (req, res) => {
     });
 });
 
+//Get all users
 router.get('/getUsers', (req, res) => {
     User.getUsers((err, data) => {
         if (err) {
